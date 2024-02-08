@@ -1,6 +1,9 @@
 package br.com.fox.certificate.domain;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,4 +35,8 @@ public class CertificacoesEstudante {
     
     @OneToMany(mappedBy = "certificacao")
     private List<RespostasCertificacao> respostasCertificacao;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
 }
