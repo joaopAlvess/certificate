@@ -13,12 +13,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 @Entity(name = "Certificacao")
 public class CertificacoesEstudante {
     
@@ -33,7 +35,8 @@ public class CertificacoesEstudante {
     
     private int nota;
     
-    @OneToMany(mappedBy = "certificacao")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<RespostasCertificacao> respostasCertificacao;
 
     @CreationTimestamp
